@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accesibilidad WCAG 2.1 AA · Demo para GitHub</title>
+  <meta name="description" content="Página demo con mejoras de accesibilidad (WCAG 2.1 AA): teclado, contraste, formularios accesibles, ARIA y multimedia." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111a2e;
+      --text:#f5f7ff;
+      --muted:#c8d1ff;
+      --accent:#ffcc00;
+      --danger:#ff5a5f;
+      --ok:#23c55e;
+      --border: rgba(255,255,255,.14);
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{ color:inherit; }
+
+    .container{
+      width:min(980px,92%);
+      margin:0 auto;
+    }
+
+    /* Skip link (WCAG 2.4.1) */
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top:12px;
+      background:var(--accent);
+      color:#1a1a1a;
+      padding:10px 12px;
+      border-radius:14px;
+      font-weight:800;
+      text-decoration:none;
+      z-index:9999;
+    }
+    .skip-link:focus{ left:12px; }
+
+    /* Foco visible (WCAG 2.4.7) */
+    :focus-visible{
+      outline:3px solid var(--accent);
+      outline-offset:3px;
+    }
+
+    header{
+      border-bottom:1px solid var(--border);
+      padding:16px 0;
+    }
+    .header-row{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .logo{
+      width:44px;height:44px;border-radius:12px;
+      border:1px solid var(--border);
+    }
+    h1{ margin:0; font-size:1.35rem; }
+    .subtitle{ margin:4px 0 0; color:var(--muted); }
+
+    .menu-btn{
+      margin-left:auto;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      background:transparent;
+      color:var(--text);
+      border-radius:14px;
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    nav{
+      padding:10px 0 14px;
+    }
+    .nav-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .nav-link{
+      text-decoration:none;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      border-radius:14px;
+    }
+    .nav-link:hover{
+      border-color: rgba(255,255,255,.35);
+    }
+
+    main{ padding:18px 0 40px; }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+      margin:18px 0;
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+    }
+    h2{ margin:0 0 10px; font-size:1.2rem; }
+    p{ margin:10px 0; }
+
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:14px;
+      border:0;
+      background:var(--accent);
+      color:#1a1a1a;
+      font-weight:900;
+      text-decoration:none;
+      cursor:pointer;
+    }
+
+    .figure img{
+      width:100%;
+      border-radius:14px;
+      border:1px solid var(--border);
+      display:block;
+    }
+    figcaption{ color:var(--muted); font-size:.95rem; margin-top:8px; }
+
+    .hint{ color:var(--muted); font-size:.95rem; }
+
+    .video{
+      width:100%;
+      border-radius:14px;
+      border:1px solid var(--border);
+      margin-top:10px;
+    }
+    details{
+      margin-top:10px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:10px 12px;
+      background: rgba(0,0,0,.18);
+    }
+    summary{ cursor:pointer; font-weight:800; }
+
+    /* Form */
+    .field{ margin-top:12px; }
+    label{ display:block; font-weight:750; margin-bottom:6px; }
+    input, textarea{
+      width:100%;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.20);
+      background: rgba(0,0,0,.18);
+      color:var(--text);
+    }
+    .error{
+      margin:8px 0 0;
+      color:var(--danger);
+      font-weight:650;
+    }
+    .error-summary{
+      border:1px solid rgba(255,255,255,.20);
+      background: rgba(255,90,95,.12);
+      padding:12px;
+      border-radius:14px;
+      margin:10px 0 14px;
+    }
+    .success{
+      margin-top:12px;
+      color:var(--ok);
+      font-weight
