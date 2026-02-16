@@ -3,177 +3,162 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Accesibilidad WCAG 2.1 AA · Demo para GitHub</title>
-  <meta name="description" content="Página demo con mejoras de accesibilidad (WCAG 2.1 AA): teclado, contraste, formularios accesibles, ARIA y multimedia." />
+  <title>Demo Accesibilidad WCAG 2.1 AA</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-  <style>
-    :root{
-      --bg:#0b1220;
-      --card:#111a2e;
-      --text:#f5f7ff;
-      --muted:#c8d1ff;
-      --accent:#ffcc00;
-      --danger:#ff5a5f;
-      --ok:#23c55e;
-      --border: rgba(255,255,255,.14);
-    }
+<body>
+  <!-- Mejora: Saltar al contenido (WCAG 2.4.1) -->
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
 
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.5;
-    }
-    a{ color:inherit; }
+  <header class="site-header">
+    <div class="container header-row">
+      <!-- Mejora: alt correcto (WCAG 1.1.1) -->
+      <img src="https://via.placeholder.com/44" alt="Logo de CloverFit" class="logo" />
 
-    .container{
-      width:min(980px,92%);
-      margin:0 auto;
-    }
+      <div>
+        <h1 class="site-title">CloverFit</h1>
+        <p class="site-subtitle">Página demo con mejoras de accesibilidad (WCAG 2.1 AA)</p>
+      </div>
 
-    /* Skip link (WCAG 2.4.1) */
-    .skip-link{
-      position:absolute;
-      left:-999px;
-      top:12px;
-      background:var(--accent);
-      color:#1a1a1a;
-      padding:10px 12px;
-      border-radius:14px;
-      font-weight:800;
-      text-decoration:none;
-      z-index:9999;
-    }
-    .skip-link:focus{ left:12px; }
+      <!-- Menú responsive accesible -->
+      <!-- Mejora: ARIA cuando es necesario (WCAG 4.1.2) -->
+      <button
+        id="btnMenu"
+        class="menu-btn"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mainNav"
+      >
+        Menú
+      </button>
+    </div>
 
-    /* Foco visible (WCAG 2.4.7) */
-    :focus-visible{
-      outline:3px solid var(--accent);
-      outline-offset:3px;
-    }
+    <!-- Mejora: Estructura semántica + navegación (WCAG 1.3.1) -->
+    <nav id="mainNav" class="nav" aria-label="Navegación principal" hidden>
+      <div class="container nav-row">
+        <!-- Mejora: enlaces descriptivos (WCAG 2.4.4) -->
+        <a class="nav-link" href="#inicio">Inicio</a>
+        <a class="nav-link" href="#servicios">Servicios</a>
+        <a class="nav-link" href="#multimedia">Multimedia</a>
+        <a class="nav-link" href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
 
-    header{
-      border-bottom:1px solid var(--border);
-      padding:16px 0;
-    }
-    .header-row{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-    .logo{
-      width:44px;height:44px;border-radius:12px;
-      border:1px solid var(--border);
-    }
-    h1{ margin:0; font-size:1.35rem; }
-    .subtitle{ margin:4px 0 0; color:var(--muted); }
+  <!-- Mejora: main + headings claros (WCAG 1.3.1 / 2.4.6) -->
+  <main id="contenido" class="container">
+    <section id="inicio" class="card" aria-labelledby="t-inicio">
+      <h2 id="t-inicio">Inicio</h2>
+      <p>
+        Esta página incluye mejoras típicas: contraste, foco visible, teclado, estructura semántica,
+        formulario accesible, ARIA correcto y vídeo con subtítulos/transcripción.
+      </p>
 
-    .menu-btn{
-      margin-left:auto;
-      padding:10px 12px;
-      border:1px solid var(--border);
-      background:transparent;
-      color:var(--text);
-      border-radius:14px;
-      cursor:pointer;
-      font-weight:700;
-    }
+      <!-- Mejora: contraste + foco visible se gestiona en CSS (WCAG 1.4.3 / 2.4.7) -->
+      <a class="btn" href="#contacto">Ir al formulario de contacto</a>
+    </section>
 
-    nav{
-      padding:10px 0 14px;
-    }
-    .nav-row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .nav-link{
-      text-decoration:none;
-      padding:10px 12px;
-      border:1px solid var(--border);
-      border-radius:14px;
-    }
-    .nav-link:hover{
-      border-color: rgba(255,255,255,.35);
-    }
+    <section id="servicios" class="card" aria-labelledby="t-servicios">
+      <h2 id="t-servicios">Servicios</h2>
 
-    main{ padding:18px 0 40px; }
+      <!-- Ejemplo imagen informativa con alt -->
+      <figure class="figure">
+        <img
+          src="https://via.placeholder.com/900x260"
+          alt="Sala de entrenamiento con máquinas de cardio y pesas"
+        />
+        <figcaption>Imagen con alternativa textual descriptiva.</figcaption>
+      </figure>
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:18px;
-      margin:18px 0;
-      box-shadow: 0 10px 26px rgba(0,0,0,.25);
-    }
-    h2{ margin:0 0 10px; font-size:1.2rem; }
-    p{ margin:10px 0; }
+      <ul>
+        <li>Entrenamientos personalizados</li>
+        <li>Reserva de clases</li>
+        <li>Seguimiento de progreso</li>
+      </ul>
+    </section>
 
-    .btn{
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:14px;
-      border:0;
-      background:var(--accent);
-      color:#1a1a1a;
-      font-weight:900;
-      text-decoration:none;
-      cursor:pointer;
-    }
+    <section id="multimedia" class="card" aria-labelledby="t-multi">
+      <h2 id="t-multi">Multimedia</h2>
 
-    .figure img{
-      width:100%;
-      border-radius:14px;
-      border:1px solid var(--border);
-      display:block;
-    }
-    figcaption{ color:var(--muted); font-size:.95rem; margin-top:8px; }
+      <!-- Mejora: vídeo con subtítulos (WCAG 1.2.x) -->
+      <p class="hint">
+        Coloca tu vídeo en <code>media/demo.mp4</code> y los subtítulos en <code>media/demo.vtt</code>.
+      </p>
 
-    .hint{ color:var(--muted); font-size:.95rem; }
+      <video class="video" controls>
+        <source src="media/demo.mp4" type="video/mp4" />
+        <track
+          kind="captions"
+          src="media/demo.vtt"
+          srclang="es"
+          label="Español"
+          default
+        />
+        Tu navegador no soporta vídeo HTML5.
+      </video>
 
-    .video{
-      width:100%;
-      border-radius:14px;
-      border:1px solid var(--border);
-      margin-top:10px;
-    }
-    details{
-      margin-top:10px;
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:10px 12px;
-      background: rgba(0,0,0,.18);
-    }
-    summary{ cursor:pointer; font-weight:800; }
+      <!-- Mejora: transcripción (WCAG 1.2.x) -->
+      <details class="transcript">
+        <summary>Ver transcripción del vídeo</summary>
+        <p>
+          [00:00] Bienvenidos a CloverFit. <br />
+          [00:05] En este vídeo te mostramos cómo reservar una clase. <br />
+          [00:15] Selecciona horario, confirma y recibe la notificación. <br />
+          [00:25] Fin.
+        </p>
+      </details>
+    </section>
 
-    /* Form */
-    .field{ margin-top:12px; }
-    label{ display:block; font-weight:750; margin-bottom:6px; }
-    input, textarea{
-      width:100%;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.20);
-      background: rgba(0,0,0,.18);
-      color:var(--text);
-    }
-    .error{
-      margin:8px 0 0;
-      color:var(--danger);
-      font-weight:650;
-    }
-    .error-summary{
-      border:1px solid rgba(255,255,255,.20);
-      background: rgba(255,90,95,.12);
-      padding:12px;
-      border-radius:14px;
-      margin:10px 0 14px;
-    }
-    .success{
-      margin-top:12px;
-      color:var(--ok);
-      font-weight
+    <section id="contacto" class="card" aria-labelledby="t-contacto">
+      <h2 id="t-contacto">Contacto</h2>
+
+      <!-- Mejora: instrucciones claras (WCAG 3.3.2) -->
+      <p class="hint" id="ayuda-form">
+        Campos obligatorios marcados con <span aria-hidden="true">*</span>.
+      </p>
+
+      <!-- Mejora: resumen de errores accesible (aria-live) -->
+      <div id="errorSummary" class="error-summary" role="alert" aria-live="assertive" hidden></div>
+
+      <form id="contactForm" novalidate aria-describedby="ayuda-form">
+        <!-- Mejora: labels asociados (WCAG 1.3.1 / 3.3.2) -->
+        <div class="field">
+          <label for="name">Nombre <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+          <p class="error" id="name-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+          <p class="error" id="email-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="msg">Mensaje <span aria-hidden="true">*</span></label>
+          <!-- Mejora: placeholder NO sustituye al label (lo usamos solo como ayuda) -->
+          <textarea id="msg" name="msg" rows="4" placeholder="Escribe tu consulta..." required></textarea>
+          <p class="error" id="msg-error" hidden></p>
+        </div>
+
+        <!-- Mejora: botón accesible -->
+        <button class="btn" type="submit">Enviar</button>
+
+        <!-- Mensaje de éxito accesible -->
+        <p id="successMsg" class="success" role="status" aria-live="polite" hidden>
+          Mensaje enviado correctamente.
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 CloverFit · Accesibilidad WCAG 2.1 AA</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
