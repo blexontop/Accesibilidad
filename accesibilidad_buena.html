@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo con Buena Accesibilidad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
+
+        h1 {
+            color: #e63946;
+        }
+
+        .content {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #f1faee;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .button {
+            background-color: #457b9d;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:focus {
+            outline: 3px solid #a8dadc;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 500px;
+        }
+
+        .navigation {
+            background-color: #1d3557;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .navigation a {
+            color: #a8dadc;
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        .navigation a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 40px;
+            background-color: #f1faee;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer-content a {
+            color: #457b9d;
+            text-decoration: none;
+            margin: 10px;
+        }
+
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Usamos etiqueta semántica <nav> para la navegación -->
+    <nav class="navigation">
+        <a href="#home" title="Ir al inicio">Inicio</a>
+        <a href="#about" title="Ir a la sección de acerca de">Acerca de</a>
+        <a href="#services" title="Ir a los servicios">Servicios</a>
+        <a href="#contact" title="Ir a la sección de contacto">Contacto</a>
+    </nav>
+
+    <header>
+        <h1>Bienvenidos a Mi Página Web</h1>
+    </header>
+
+    <main class="content">
+        <section id="about">
+            <h2>Sobre Nosotros</h2>
+            <p>Este es un párrafo de texto con información sobre nuestra página web. Mejoramos la estructura de la página con etiquetas semánticas adecuadas para facilitar la navegación a usuarios con discapacidades.</p>
+        </section>
+
+        <!-- Imagen con texto alternativo adecuado -->
+        <section id="image-section">
+            <h2>Imagen de Ejemplo</h2>
+            <div class="image-container">
+                <img src="image.jpg" alt="Imagen de ejemplo de nuestro servicio" />
+            </div>
+        </section>
+
+        <!-- Botones accesibles con texto descriptivo -->
+        <section id="buttons">
+            <h2>Interacciones</h2>
+            <button class="button" aria-label="Acción de clic para más información">Haz clic aquí para saber más</button>
+            <button class="button" aria-label="Botón para enviar una alerta" onclick="alert('Hola!')">Enviar alerta</button>
+        </section>
+
+        <!-- Formulario con etiquetas accesibles -->
+        <section id="form-section">
+            <h2>Formulario de Contacto</h2>
+            <form action="#" method="post" aria-labelledby="form-section">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" placeholder="Introduce tu nombre" aria-required="true">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="Introduce tu correo" aria-required="true">
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <!-- Sección con texto con buen contraste -->
+        <section id="good-contrast">
+            <h2>Texto con Buen Contraste</h2>
+            <p style="color: #1d3557; background-color: #f1faee; padding: 15px;">Este texto tiene un buen contraste, lo que facilita la lectura para personas con dificultades visuales.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <a href="#privacy-policy" title="Ir a la política de privacidad">Política de privacidad</a>
+            <a href="#terms" title="Ir a los términos y condiciones">Términos y condiciones</a>
+            <a href="#cookies" title="Ir a la política de cookies">Política de Cookies</a>
+        </div>
+    </footer>
+</body>
+</html>
