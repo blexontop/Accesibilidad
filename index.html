@@ -1,359 +1,120 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Accesibilidad · WCAG 2.1 AA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo con Baja Accesibilidad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
 
-  <style>
-    :root {
-      --bg: #0b1220;
-      --card: #111a2e;
-      --text: #f5f7ff;
-      --muted: #c8d1ff;
-      --accent: #ffcc00;
-      --danger: #ff5a5f;
-      --ok: #23c55e;
-      --border: rgba(255,255,255,0.12);
-    }
+        h1 {
+            color: red;
+        }
 
-    * { box-sizing: border-box; }
+        .content {
+            width: 80%;
+            margin: 0 auto;
+            background-color: yellow;
+            padding: 20px;
+        }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-    }
+        .button {
+            background-color: blue;
+            color: green;
+            font-size: 20px;
+            text-align: center;
+            padding: 10px 15px;
+            border: none;
+        }
 
-    .container { width: min(980px, 92%); margin: 0 auto; }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-    .site-header { border-bottom: 1px solid var(--border); padding: 16px 0; }
-    .header-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
-    .logo { width: 44px; height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.16); }
-    .site-title { margin: 0; font-size: 1.25rem; }
-    .site-subtitle { margin: 4px 0 0; color: var(--muted); font-size: 0.95rem; }
+        img {
+            width: 100%;
+            height: auto;
+        }
 
-    .menu-btn {
-      margin-left: auto;
-      padding: 10px 12px;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: transparent;
-      color: var(--text);
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 700;
-    }
+        .navigation {
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
 
-    .nav { padding: 10px 0 14px; }
-    .nav-row { display: flex; gap: 12px; flex-wrap: wrap; }
+        .navigation a {
+            color: yellow;
+            padding: 10px;
+            text-decoration: none;
+        }
 
-    .nav-link {
-      color: var(--text);
-      text-decoration: none;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.14);
-    }
-    .nav-link:hover { border-color: rgba(255,255,255,0.35); }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-      margin: 18px 0;
-    }
-
-    .figure img {
-      width: 100%;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .hint { color: var(--muted); }
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 14px;
-      border-radius: 14px;
-      border: 0;
-      background: var(--accent);
-      color: #1a1a1a;
-      font-weight: 800;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    /* Foco visible (WCAG 2.4.7) */
-    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-
-    /* Skip link (WCAG 2.4.1) */
-    .skip-link {
-      position: absolute;
-      left: -999px;
-      top: 10px;
-      background: var(--accent);
-      color: #1a1a1a;
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-weight: 900;
-      text-decoration: none;
-    }
-    .skip-link:focus { left: 10px; z-index: 9999; }
-
-    .field { margin-top: 12px; }
-    label { display: block; font-weight: 650; margin-bottom: 6px; }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.20);
-      background: rgba(0,0,0,0.20);
-      color: var(--text);
-    }
-
-    .error { margin: 8px 0 0; color: var(--danger); font-weight: 650; }
-
-    .error-summary {
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(255, 90, 95, 0.10);
-      padding: 12px;
-      border-radius: 14px;
-      margin: 10px 0 14px;
-    }
-
-    .success { margin-top: 12px; color: var(--ok); font-weight: 800; }
-
-    .video { width: 100%; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); }
-
-    .site-footer { border-top: 1px solid var(--border); padding: 18px 0; color: var(--muted); }
-
-    /* Extra: tarjeta de “tarea” */
-    .task-list li { margin: 6px 0; }
-    code { background: rgba(0,0,0,0.25); padding: 2px 6px; border-radius: 8px; }
-  </style>
+        footer {
+            margin-top: 40px;
+            background-color: grey;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
-
-  <header class="site-header">
-    <div class="container header-row">
-      <img src="https://via.placeholder.com/44" alt="Logo de CloverFit" class="logo" />
-
-      <div>
-        <h1 class="site-title">Accesibilidad · WCAG 2.1 AA</h1>
-        <p class="site-subtitle">Archivo: <strong>accesibilidad.html</strong> (listo para GitHub)</p>
-      </div>
-
-      <button id="btnMenu" class="menu-btn" type="button" aria-expanded="false" aria-controls="mainNav">
-        Menú
-      </button>
+    <!-- Error: No uso de etiquetas semánticas -->
+    <div class="navigation">
+        <a href="#home">Inicio</a>
+        <a href="#about">Acerca de</a>
+        <a href="#services">Servicios</a>
+        <a href="#contact">Contacto</a>
     </div>
 
-    <nav id="mainNav" class="nav" aria-label="Navegación principal" hidden>
-      <div class="container nav-row">
-        <a class="nav-link" href="#tarea">Tarea</a>
-        <a class="nav-link" href="#inicio">Inicio</a>
-        <a class="nav-link" href="#servicios">Servicios</a>
-        <a class="nav-link" href="#multimedia">Multimedia</a>
-        <a class="nav-link" href="#contacto">Contacto</a>
-      </div>
-    </nav>
-  </header>
+    <h1>Bienvenidos a Mi Página Web</h1>
 
-  <main id="contenido" class="container">
-    <!-- Sección añadida: la tarea -->
-    <section id="tarea" class="card" aria-labelledby="t-tarea">
-      <h2 id="t-tarea">Tarea: Accesibilidad</h2>
-      <ol class="task-list">
-        <li><strong>Seleccionar</strong> la página desarrollada y evaluarla.</li>
-        <li><strong>Evaluar accesibilidad</strong> con <strong>WAVE o Lighthouse</strong> y guardar capturas (antes).</li>
-        <li>
-          <strong>Checklist WCAG 2.1 AA</strong> (mínimo 10 criterios).
-          <br />Ejemplos: <code>1.1.1</code>, <code>1.3.1</code>, <code>1.4.3</code>, <code>2.1.1</code>, <code>2.4.1</code>, <code>2.4.4</code>, <code>2.4.6</code>, <code>3.3.2</code>, <code>4.1.2</code>, <code>1.2.x</code>.
-        </li>
-        <li><strong>Implementar</strong> al menos <strong>8 mejoras</strong> (alt, contraste, teclado, semántica, formularios, ARIA, subtítulos/transcripción…).</li>
-        <li>
-          <strong>Justificar cambios</strong>:
-          <ul>
-            <li>Capturas <strong>antes vs después</strong></li>
-            <li>Criterio WCAG asociado</li>
-            <li>Explicación técnica breve</li>
-          </ul>
-        </li>
-      </ol>
-      <p class="hint">
-        Consejo: guarda tus capturas en carpetas <code>docs/before</code> y <code>docs/after</code> dentro del repo.
-      </p>
-    </section>
-
-    <section id="inicio" class="card" aria-labelledby="t-inicio">
-      <h2 id="t-inicio">Inicio</h2>
-      <p>
-        Esta página incluye mejoras típicas: contraste, foco visible, teclado, estructura semántica,
-        formulario accesible, ARIA correcto y vídeo con subtítulos/transcripción.
-      </p>
-      <a class="btn" href="#contacto">Ir al formulario de contacto</a>
-    </section>
-
-    <section id="servicios" class="card" aria-labelledby="t-servicios">
-      <h2 id="t-servicios">Servicios</h2>
-
-      <figure class="figure">
-        <img
-          src="https://via.placeholder.com/900x260"
-          alt="Sala de entrenamiento con máquinas de cardio y pesas"
-        />
-        <figcaption>Imagen con alternativa textual descriptiva.</figcaption>
-      </figure>
-
-      <ul>
-        <li>Entrenamientos personalizados</li>
-        <li>Reserva de clases</li>
-        <li>Seguimiento de progreso</li>
-      </ul>
-    </section>
-
-    <section id="multimedia" class="card" aria-labelledby="t-multi">
-      <h2 id="t-multi">Multimedia</h2>
-
-      <p class="hint">
-        Coloca tu vídeo en <code>media/demo.mp4</code> y los subtítulos en <code>media/demo.vtt</code>.
-      </p>
-
-      <video class="video" controls>
-        <source src="media/demo.mp4" type="video/mp4" />
-        <track kind="captions" src="media/demo.vtt" srclang="es" label="Español" default />
-        Tu navegador no soporta vídeo HTML5.
-      </video>
-
-      <details class="transcript">
-        <summary>Ver transcripción del vídeo</summary>
-        <p>
-          [00:00] Bienvenidos a CloverFit. <br />
-          [00:05] En este vídeo te mostramos cómo reservar una clase. <br />
-          [00:15] Selecciona horario, confirma y recibe la notificación. <br />
-          [00:25] Fin.
-        </p>
-      </details>
-    </section>
-
-    <section id="contacto" class="card" aria-labelledby="t-contacto">
-      <h2 id="t-contacto">Contacto</h2>
-
-      <p class="hint" id="ayuda-form">
-        Campos obligatorios marcados con <span aria-hidden="true">*</span>.
-      </p>
-
-      <div id="errorSummary" class="error-summary" role="alert" aria-live="assertive" hidden></div>
-
-      <form id="contactForm" novalidate aria-describedby="ayuda-form">
-        <div class="field">
-          <label for="name">Nombre <span aria-hidden="true">*</span></label>
-          <input id="name" name="name" type="text" autocomplete="name" required />
-          <p class="error" id="name-error" hidden></p>
+    <div class="content">
+        <h2>Un Título Sin Jerarquía Correcta</h2>
+        <p>Este es un párrafo de texto sin etiquetas de encabezado adicionales para mejorar la estructura de la página. Las personas que usan lectores de pantalla pueden tener dificultades para navegar por la página debido a la falta de estructura.</p>
+        
+        <!-- Error: Imágenes sin texto alternativo -->
+        <div class="image-container">
+            <img src="image.jpg" />
         </div>
 
-        <div class="field">
-          <label for="email">Email <span aria-hidden="true">*</span></label>
-          <input id="email" name="email" type="email" autocomplete="email" required />
-          <p class="error" id="email-error" hidden></p>
+        <button class="button">Haz clic aquí</button>
+        <button class="button" onclick="alert('Hola!')">Otro botón sin etiquetas accesibles</button>
+
+        <!-- Error: No hay descripciones adecuadas para los botones -->
+        <form action="#" method="post">
+            <input type="text" placeholder="Nombre">
+            <input type="email" placeholder="Correo Electrónico">
+            <button type="submit">Enviar</button> <!-- Error: botón sin descripción -->
+        </form>
+        
+        <!-- Error: Texto con bajo contraste -->
+        <div style="background-color: lightblue; color: lightgreen; padding: 15px;">
+            <p>Este texto tiene un contraste muy bajo y puede ser difícil de leer para algunas personas.</p>
         </div>
-
-        <div class="field">
-          <label for="msg">Mensaje <span aria-hidden="true">*</span></label>
-          <textarea id="msg" name="msg" rows="4" placeholder="Escribe tu consulta..." required></textarea>
-          <p class="error" id="msg-error" hidden></p>
+        
+        <!-- Error: Uso incorrecto de colores -->
+        <div style="background-color: green; color: red;">
+            <p>Este texto con fondo verde y texto rojo también presenta un problema de contraste y accesibilidad.</p>
         </div>
-
-        <button class="btn" type="submit">Enviar</button>
-
-        <p id="successMsg" class="success" role="status" aria-live="polite" hidden>
-          Mensaje enviado correctamente.
-        </p>
-      </form>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2026 CloverFit · Accesibilidad WCAG 2.1 AA</p>
+        
+        <footer>
+            <!-- Error: No está etiquetado correctamente -->
+            <p>Contacto: info@ejemplo.com</p>
+        </footer>
     </div>
-  </footer>
 
-  <script>
-    // Menú accesible (ARIA-expanded + hidden)
-    const btnMenu = document.getElementById("btnMenu");
-    const nav = document.getElementById("mainNav");
-
-    btnMenu.addEventListener("click", () => {
-      const isOpen = btnMenu.getAttribute("aria-expanded") === "true";
-      btnMenu.setAttribute("aria-expanded", String(!isOpen));
-      nav.hidden = isOpen;
-    });
-
-    // Formulario accesible con errores asociados (WCAG 3.3.1/3.3.2 + 4.1.2)
-    const form = document.getElementById("contactForm");
-    const errorSummary = document.getElementById("errorSummary");
-    const successMsg = document.getElementById("successMsg");
-
-    function setError(inputId, message) {
-      const input = document.getElementById(inputId);
-      const p = document.getElementById(`${inputId}-error`);
-      p.textContent = message;
-      p.hidden = false;
-      input.setAttribute("aria-invalid", "true");
-      input.setAttribute("aria-describedby", `${inputId}-error`);
-    }
-
-    function clearError(inputId) {
-      const input = document.getElementById(inputId);
-      const p = document.getElementById(`${inputId}-error`);
-      p.textContent = "";
-      p.hidden = true;
-      input.removeAttribute("aria-invalid");
-      input.removeAttribute("aria-describedby");
-    }
-
-    function isValidEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      ["name", "email", "msg"].forEach(clearError);
-      errorSummary.hidden = true;
-      errorSummary.innerHTML = "";
-      successMsg.hidden = true;
-
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const msg = document.getElementById("msg").value.trim();
-
-      const errors = [];
-
-      if (!name) { errors.push("El nombre es obligatorio."); setError("name", "Introduce tu nombre."); }
-      if (!email) { errors.push("El email es obligatorio."); setError("email", "Introduce tu email."); }
-      else if (!isValidEmail(email)) { errors.push("El email no tiene un formato válido."); setError("email", "Ejemplo válido: nombre@correo.com"); }
-      if (!msg) { errors.push("El mensaje es obligatorio."); setError("msg", "Escribe un mensaje."); }
-
-      if (errors.length) {
-        errorSummary.hidden = false;
-        errorSummary.innerHTML =
-          `<strong>No se pudo enviar.</strong><ul>${errors.map(e => `<li>${e}</li>`).join("")}</ul>`;
-        errorSummary.setAttribute("tabindex", "-1");
-        errorSummary.focus();
-        return;
-      }
-
-      successMsg.hidden = false;
-      form.reset();
-    });
-  </script>
+    <!-- Error: Mala estructura del código y uso incorrecto de enlaces -->
+    <footer>
+        <div class="footer-content">
+            <a href="#privacy-policy">Política de privacidad</a>
+            <a href="#terms">Términos y condiciones</a>
+            <a href="#cookies">Política de Cookies</a>
+        </div>
+    </footer>
 </body>
 </html>
