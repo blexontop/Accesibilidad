@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Demo Accesibilidad WCAG 2.1 AA</title>
+  <title>Demo Accesibilidad Nula</title>
 
   <style>
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #0b1220;
-      color: #f5f7ff;
+      background: #000;
+      color: #fff;
       line-height: 1.5;
     }
 
     .container {
-      width: min(980px, 92%);
+      width: 100%;
       margin: 0 auto;
     }
 
@@ -32,39 +32,39 @@
       flex-wrap: wrap;
     }
 
-    .logo { width: 44px; height: 44px; border-radius: 10px; }
+    .logo { width: 100px; height: 100px; }
 
     .site-title { margin: 0; font-size: 1.25rem; }
-    .site-subtitle { margin: 4px 0 0; color: #c8d1ff; font-size: 0.95rem; }
+    .site-subtitle { margin: 4px 0 0; font-size: 0.95rem; }
 
     .menu-btn {
       margin-left: auto;
       padding: 10px 12px;
-      border: 1px solid rgba(255,255,255,0.2);
       background: transparent;
-      color: #f5f7ff;
-      border-radius: 12px;
+      color: #fff;
+      border: none;
       cursor: pointer;
       font-weight: 700;
+    }
+
+    .nav {
+      padding: 10px 0 14px;
     }
 
     .nav-row {
       display: flex;
       gap: 12px;
-      flex-wrap: wrap;
     }
 
     .nav-link {
-      color: #f5f7ff;
+      color: #fff;
       text-decoration: none;
       padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.14);
     }
 
     .card {
-      background: #111a2e;
-      border: 1px solid rgba(255,255,255,0.12);
+      background: #333;
+      border: 1px solid #444;
       border-radius: 18px;
       padding: 18px;
       margin: 18px 0;
@@ -72,16 +72,12 @@
 
     .figure img {
       width: 100%;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
     }
 
     .btn {
       display: inline-block;
       margin-top: 10px;
       padding: 10px 14px;
-      border-radius: 14px;
-      border: 0;
       background: #ffcc00;
       color: #1a1a1a;
       font-weight: 700;
@@ -92,53 +88,28 @@
     .skip-link {
       position: absolute;
       left: -999px;
-      top: 10px;
-      background: #ffcc00;
-      color: #1a1a1a;
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-weight: 800;
-      text-decoration: none;
-    }
-    .skip-link:focus {
-      left: 10px;
-      z-index: 9999;
     }
 
-    .field { margin-top: 12px; }
     label { display: block; font-weight: 650; margin-bottom: 6px; }
 
     input, textarea {
       width: 100%;
       padding: 10px 12px;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.20);
       background: rgba(0,0,0,0.20);
-      color: #f5f7ff;
+      color: #fff;
     }
 
-    .error {
-      margin: 8px 0 0;
-      color: #ff5a5f;
-      font-weight: 650;
-    }
+    .error { color: #ff5a5f; }
 
     .error-summary {
-      border: 1px solid rgba(255,255,255,0.2);
       background: rgba(255, 90, 95, 0.10);
       padding: 12px;
       border-radius: 14px;
-      margin: 10px 0 14px;
     }
 
-    .success {
-      margin-top: 12px;
-      color: #23c55e;
-      font-weight: 700;
-    }
-
-    .site-footer {
-      border-top: 1px solid rgba(255,255,255,0.12);
+    .footer {
+      border-top: 1px solid #444;
       padding: 18px 0;
       color: #c8d1ff;
     }
@@ -146,33 +117,26 @@
 </head>
 
 <body>
-  <!-- Error: Saltar al contenido mal posicionado -->
-  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+  <!-- Saltar al contenido no tiene visibilidad ni ubicación correcta -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <header class="site-header">
     <div class="container header-row">
-      <!-- Error: Falta el atributo alt -->
-      <img src="https://via.placeholder.com/44" class="logo" />
+      <!-- Imagen sin alt y sin descripción adecuada -->
+      <img src="https://via.placeholder.com/100" class="logo" />
 
       <div>
         <h1 class="site-title">CloverFit</h1>
-        <p class="site-subtitle">Página demo con mejoras de accesibilidad (WCAG 2.1 AA)</p>
+        <p class="site-subtitle">Página sin accesibilidad</p>
       </div>
 
-      <!-- Menú responsive no accesible -->
-      <button
-        id="btnMenu"
-        class="menu-btn"
-        type="button"
-        aria-expanded="false"
-        aria-controls="mainNav"
-      >
-        Menú
-      </button>
+      <!-- Menú sin roles, aria y etiquetas adecuadas -->
+      <button class="menu-btn">Menú</button>
     </div>
 
-    <nav id="mainNav" class="nav" aria-label="Navegación principal" hidden>
+    <nav class="nav">
       <div class="container nav-row">
+        <!-- Enlaces sin descripciones ni atributos ARIA -->
         <a class="nav-link" href="#inicio">Inicio</a>
         <a class="nav-link" href="#servicios">Servicios</a>
         <a class="nav-link" href="#multimedia">Multimedia</a>
@@ -182,23 +146,17 @@
   </header>
 
   <main id="contenido" class="container">
-    <section id="inicio" class="card" aria-labelledby="t-inicio">
-      <h2 id="t-inicio">Inicio</h2>
-      <p>
-        Esta página incluye mejoras típicas: contraste, foco visible, teclado, estructura semántica,
-        formulario accesible, ARIA correcto y vídeo con subtítulos/transcripción.
-      </p>
+    <section id="inicio" class="card">
+      <h2>Inicio</h2>
+      <p>Contenido sin estructura semántica adecuada, sin etiquetas de encabezado jerárquicas.</p>
       <a class="btn" href="#contacto">Ir al formulario de contacto</a>
     </section>
 
-    <section id="servicios" class="card" aria-labelledby="t-servicios">
-      <h2 id="t-servicios">Servicios</h2>
-
+    <section id="servicios" class="card">
+      <h2>Servicios</h2>
       <figure class="figure">
-        <!-- Error: Imagen sin "alt" -->
-        <img
-          src="https://via.placeholder.com/900x260" />
-        <figcaption>Imagen con alternativa textual descriptiva.</figcaption>
+        <!-- Imagen sin "alt" -->
+        <img src="https://via.placeholder.com/900x260" />
       </figure>
 
       <ul>
@@ -208,74 +166,45 @@
       </ul>
     </section>
 
-    <section id="multimedia" class="card" aria-labelledby="t-multi">
-      <h2 id="t-multi">Multimedia</h2>
-
+    <section id="multimedia" class="card">
+      <h2>Multimedia</h2>
       <video class="video" controls>
         <source src="media/demo.mp4" type="video/mp4" />
-        <track
-          kind="captions"
-          src="media/demo.vtt"
-          srclang="es"
-          label="Español"
-          default
-        />
-        Tu navegador no soporta vídeo HTML5.
+        Tu navegador no soporta video HTML5.
       </video>
     </section>
 
-    <section id="contacto" class="card" aria-labelledby="t-contacto">
-      <h2 id="t-contacto">Contacto</h2>
-
-      <p class="hint" id="ayuda-form">
-        Campos obligatorios marcados con <span aria-hidden="true">*</span>.
-      </p>
-
-      <div id="errorSummary" class="error-summary" role="alert" aria-live="assertive" hidden></div>
-
-      <form id="contactForm" novalidate aria-describedby="ayuda-form">
-        <div class="field">
-          <label for="name">Nombre <span aria-hidden="true">*</span></label>
-          <input id="name" name="name" type="text" autocomplete="name" required />
-          <p class="error" id="name-error" hidden></p>
+    <section id="contacto" class="card">
+      <h2>Contacto</h2>
+      <form id="contactForm">
+        <div>
+          <!-- Falta el uso de etiquetas 'label' y 'for' -->
+          <input id="name" name="name" type="text" />
         </div>
-
-        <div class="field">
-          <label for="email">Email <span aria-hidden="true">*</span></label>
-          <input id="email" name="email" type="email" autocomplete="email" required />
-          <p class="error" id="email-error" hidden></p>
+        <div>
+          <input id="email" name="email" type="email" />
         </div>
-
-        <div class="field">
-          <label for="msg">Mensaje <span aria-hidden="true">*</span></label>
-          <textarea id="msg" name="msg" rows="4" placeholder="Escribe tu consulta..." required></textarea>
-          <p class="error" id="msg-error" hidden></p>
+        <div>
+          <textarea id="msg" name="msg"></textarea>
         </div>
-
         <button class="btn" type="submit">Enviar</button>
-
-        <p id="successMsg" class="success" role="status" aria-live="polite" hidden>
-          Mensaje enviado correctamente.
-        </p>
       </form>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="footer">
     <div class="container">
-      <p>© 2026 CloverFit · Accesibilidad WCAG 2.1 AA</p>
+      <p>© 2026 CloverFit · Accesibilidad nula</p>
     </div>
   </footer>
 
   <script>
-    // Menú accesible (ARIA-expanded + hidden)
-    const btnMenu = document.getElementById("btnMenu");
-    const nav = document.getElementById("mainNav");
+    // Menú no accesible ni bien gestionado
+    const btnMenu = document.querySelector(".menu-btn");
+    const nav = document.querySelector(".nav");
 
     btnMenu.addEventListener("click", () => {
-      const isOpen = btnMenu.getAttribute("aria-expanded") === "true";
-      btnMenu.setAttribute("aria-expanded", String(!isOpen));
-      nav.hidden = isOpen;
+      nav.classList.toggle("hidden");
     });
   </script>
 </body>
