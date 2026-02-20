@@ -1,211 +1,120 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Demo Accesibilidad Nula</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo con Baja Accesibilidad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
 
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #000;
-      color: #fff;
-      line-height: 1.5;
-    }
+        h1 {
+            color: red;
+        }
 
-    .container {
-      width: 100%;
-      margin: 0 auto;
-    }
+        .content {
+            width: 80%;
+            margin: 0 auto;
+            background-color: yellow;
+            padding: 20px;
+        }
 
-    .site-header {
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      padding: 16px 0;
-    }
+        .button {
+            background-color: blue;
+            color: green;
+            font-size: 20px;
+            text-align: center;
+            padding: 10px 15px;
+            border: none;
+        }
 
-    .header-row {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-    .logo { width: 100px; height: 100px; }
+        img {
+            width: 100%;
+            height: auto;
+        }
 
-    .site-title { margin: 0; font-size: 1.25rem; }
-    .site-subtitle { margin: 4px 0 0; font-size: 0.95rem; }
+        .navigation {
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
 
-    .menu-btn {
-      margin-left: auto;
-      padding: 10px 12px;
-      background: transparent;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-weight: 700;
-    }
+        .navigation a {
+            color: yellow;
+            padding: 10px;
+            text-decoration: none;
+        }
 
-    .nav {
-      padding: 10px 0 14px;
-    }
-
-    .nav-row {
-      display: flex;
-      gap: 12px;
-    }
-
-    .nav-link {
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 12px;
-    }
-
-    .card {
-      background: #333;
-      border: 1px solid #444;
-      border-radius: 18px;
-      padding: 18px;
-      margin: 18px 0;
-    }
-
-    .figure img {
-      width: 100%;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 14px;
-      background: #ffcc00;
-      color: #1a1a1a;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .skip-link {
-      position: absolute;
-      left: -999px;
-    }
-
-    label { display: block; font-weight: 650; margin-bottom: 6px; }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: rgba(0,0,0,0.20);
-      color: #fff;
-    }
-
-    .error { color: #ff5a5f; }
-
-    .error-summary {
-      background: rgba(255, 90, 95, 0.10);
-      padding: 12px;
-      border-radius: 14px;
-    }
-
-    .footer {
-      border-top: 1px solid #444;
-      padding: 18px 0;
-      color: #c8d1ff;
-    }
-  </style>
+        footer {
+            margin-top: 40px;
+            background-color: grey;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Saltar al contenido no tiene visibilidad ni ubicación correcta -->
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
-
-  <header class="site-header">
-    <div class="container header-row">
-      <!-- Imagen sin alt y sin descripción adecuada -->
-      <img src="https://via.placeholder.com/100" class="logo" />
-
-      <div>
-        <h1 class="site-title">CloverFit</h1>
-        <p class="site-subtitle">Página sin accesibilidad</p>
-      </div>
-
-      <!-- Menú sin roles, aria y etiquetas adecuadas -->
-      <button class="menu-btn">Menú</button>
+    <!-- Error: No uso de etiquetas semánticas -->
+    <div class="navigation">
+        <a href="#home">Inicio</a>
+        <a href="#about">Acerca de</a>
+        <a href="#services">Servicios</a>
+        <a href="#contact">Contacto</a>
     </div>
 
-    <nav class="nav">
-      <div class="container nav-row">
-        <!-- Enlaces sin descripciones ni atributos ARIA -->
-        <a class="nav-link" href="#inicio">Inicio</a>
-        <a class="nav-link" href="#servicios">Servicios</a>
-        <a class="nav-link" href="#multimedia">Multimedia</a>
-        <a class="nav-link" href="#contacto">Contacto</a>
-      </div>
-    </nav>
-  </header>
+    <h1>Bienvenidos a Mi Página Web</h1>
 
-  <main id="contenido" class="container">
-    <section id="inicio" class="card">
-      <h2>Inicio</h2>
-      <p>Contenido sin estructura semántica adecuada, sin etiquetas de encabezado jerárquicas.</p>
-      <a class="btn" href="#contacto">Ir al formulario de contacto</a>
-    </section>
-
-    <section id="servicios" class="card">
-      <h2>Servicios</h2>
-      <figure class="figure">
-        <!-- Imagen sin "alt" -->
-        <img src="https://via.placeholder.com/900x260" />
-      </figure>
-
-      <ul>
-        <li>Entrenamientos personalizados</li>
-        <li>Reserva de clases</li>
-        <li>Seguimiento de progreso</li>
-      </ul>
-    </section>
-
-    <section id="multimedia" class="card">
-      <h2>Multimedia</h2>
-      <video class="video" controls>
-        <source src="media/demo.mp4" type="video/mp4" />
-        Tu navegador no soporta video HTML5.
-      </video>
-    </section>
-
-    <section id="contacto" class="card">
-      <h2>Contacto</h2>
-      <form id="contactForm">
-        <div>
-          <!-- Falta el uso de etiquetas 'label' y 'for' -->
-          <input id="name" name="name" type="text" />
+    <div class="content">
+        <h2>Un Título Sin Jerarquía Correcta</h2>
+        <p>Este es un párrafo de texto sin etiquetas de encabezado adicionales para mejorar la estructura de la página. Las personas que usan lectores de pantalla pueden tener dificultades para navegar por la página debido a la falta de estructura.</p>
+        
+        <!-- Error: Imágenes sin texto alternativo -->
+        <div class="image-container">
+            <img src="image.jpg" />
         </div>
-        <div>
-          <input id="email" name="email" type="email" />
-        </div>
-        <div>
-          <textarea id="msg" name="msg"></textarea>
-        </div>
-        <button class="btn" type="submit">Enviar</button>
-      </form>
-    </section>
-  </main>
 
-  <footer class="footer">
-    <div class="container">
-      <p>© 2026 CloverFit · Accesibilidad nula</p>
+        <button class="button">Haz clic aquí</button>
+        <button class="button" onclick="alert('Hola!')">Otro botón sin etiquetas accesibles</button>
+
+        <!-- Error: No hay descripciones adecuadas para los botones -->
+        <form action="#" method="post">
+            <input type="text" placeholder="Nombre">
+            <input type="email" placeholder="Correo Electrónico">
+            <button type="submit">Enviar</button> <!-- Error: botón sin descripción -->
+        </form>
+        
+        <!-- Error: Texto con bajo contraste -->
+        <div style="background-color: lightblue; color: lightgreen; padding: 15px;">
+            <p>Este texto tiene un contraste muy bajo y puede ser difícil de leer para algunas personas.</p>
+        </div>
+        
+        <!-- Error: Uso incorrecto de colores -->
+        <div style="background-color: green; color: red;">
+            <p>Este texto con fondo verde y texto rojo también presenta un problema de contraste y accesibilidad.</p>
+        </div>
+        
+        <footer>
+            <!-- Error: No está etiquetado correctamente -->
+            <p>Contacto: info@ejemplo.com</p>
+        </footer>
     </div>
-  </footer>
 
-  <script>
-    // Menú no accesible ni bien gestionado
-    const btnMenu = document.querySelector(".menu-btn");
-    const nav = document.querySelector(".nav");
-
-    btnMenu.addEventListener("click", () => {
-      nav.classList.toggle("hidden");
-    });
-  </script>
+    <!-- Error: Mala estructura del código y uso incorrecto de enlaces -->
+    <footer>
+        <div class="footer-content">
+            <a href="#privacy-policy">Política de privacidad</a>
+            <a href="#terms">Términos y condiciones</a>
+            <a href="#cookies">Política de Cookies</a>
+        </div>
+    </footer>
 </body>
 </html>
